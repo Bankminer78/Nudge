@@ -1,0 +1,152 @@
+# Environment and API Keys
+.env
+.env.local
+.env.*.local
+*.key
+api_keys.txt
+secrets.json
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environments
+myenv/
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# IDE and Editor Files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Project-specific data files
+captures/
+user_activities.json
+inferred_tasks.json
+tasks.json
+*.log
+logs/
+
+# LlamaIndex and Vector Database
+vector_db/
+chroma_db/
+*.index
+*.jsonl
+
+# Node.js (for screenpipe integration)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.backup
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Screenshots and captures (keep structure but ignore content)
+captures/*.png
+captures/*.jpg
+captures/*.jpeg
+captures/*.txt
+
+# Keep the captures directory structure
+!captures/.gitkeep
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux
+*~
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# pyenv
+.python-version
+
+# pipenv
+Pipfile.lock
+
+# PEP 582
+__pypackages__/
+
+# Celery
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath parsed files
+*.sage.py
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# OpenAI API usage logs
+openai_usage.log
+
+# Screenpipe data
+.screenpipe/
+screenpipe_data/
+
+# Backup files
+*.backup
+*.old
+*.orig 

@@ -1,0 +1,13 @@
+{
+  "name": "nudge",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "node screenpipe_basic.js",
+    "screenshot": "node screenshot_capture.js"
+  },
+  "dependencies": {
+    "@screenpipe/js": "^0.1.0",
+    "screenshot-desktop": "^1.15.0"
+  }
+}
