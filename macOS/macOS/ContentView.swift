@@ -1,59 +1,41 @@
-//
-//  ContentView.swift
-//  macOS
-//
-//  Created by Tanish Pradhan Wong Ah Sui on 7/26/25.
-//
-
 import SwiftUI
-import SwiftData
 
 struct ContentView: View {
-    @Environment(\.modelContext) private var modelContext
-    @Query private var items: [Item]
-
+    @State private var updates: [Update] = []
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    
     var body: some View {
-        NavigationSplitView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
-                    } label: {
-                        Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
-                    }
-                }
-                .onDelete(perform: deleteItems)
-            }
-            .navigationSplitViewColumnWidth(min: 180, ideal: 200)
-            .toolbar {
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
+        VStack {
+            Text("Updates")
+                .font(.largeTitle)
+                .padding()
+            
+            List(updates) { update in
+                VStack(alignment: .leading) {
+                    Text(update.title)
+                        .font(.headline)
+                    Text(update.description)
+                        .font(.subheadline)
                 }
             }
-        } detail: {
-            Text("Select an item")
+        }
+        .onReceive(timer) { _ in
+            checkForUpdates()
         }
     }
-
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(timestamp: Date())
-            modelContext.insert(newItem)
-        }
-    }
-
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            for index in offsets {
-                modelContext.delete(items[index])
+    
+    func checkForUpdates() {
+        MockData.checkForUpdates { newUpdates in
+            if let newUpdates = newUpdates {
+                self.updates = newUpdates
+                NotificationManager.shared.sendNotification(title: "New Updates Available", body: "Check out the latest changes.")
             }
         }
     }
 }
 
-#Preview {
-    ContentView()
-        .modelContainer(for: Item.self, inMemory: true)
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
 }
